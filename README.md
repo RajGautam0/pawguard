@@ -81,6 +81,5 @@ Adoption tab → Fetch dogs from MongoDB → Display profiles.
 
 📜 License
 This project is for academic purposes (Final Year Project).
-Responsible AI disclaimer: Predictions are for educational/demo use only and not a substitute for veterinary care.
+Disclaimer: Predictions are for educational/demo use only and not a substitute for veterinary care.
 
-Made with ❤️ by Raj Gautam
