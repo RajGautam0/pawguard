@@ -1,45 +1,86 @@
 # PawGuard 🐾 – Dog Protection App
 
 ## 📖 Project Overview
-PawGuard is a cross‑platform Flutter application developed as a final year project.  
-It focuses on **dog safety, monitoring, and biometric integration**, combining mobile app features with an AI‑powered backend for intelligent detection and alerts.
+PawGuard is a **Final Year Project** that combines **Flutter**, **Python/TensorFlow**, **Flask**, and **MongoDB** to create a cross‑platform dog protection and adoption app.  
+It helps pet owners detect skin diseases in dogs using AI, provides first‑aid guidance, and connects users with adoptable dogs.
 
 ## 🎯 Objectives
-- Provide a reliable tool for dog owners to track and protect their pets.
-- Integrate biometric devices (e.g., ZKTeco/Sintech) for attendance and activity logging.
-- Use AI models to detect and respond to potential risks.
-- Deliver a smooth, multi‑platform experience across Android, iOS, Web, and Desktop.
+- Detect common dog skin conditions using a trained deep learning model.
+- Provide AI‑assisted first‑aid advice (with disclaimers for responsible use).
+- Offer an adoption module backed by MongoDB.
+- Deliver a polished, demo‑ready Flutter UI across mobile and desktop.
 
 ## 🚀 Features
-- 🐶 **Biometric Integration** – Device connectivity for activity logs.  
-- 🔒 **AI Backend** – Python scripts + trained models for detection.  
-- 📊 **Analytics Dashboard** – Real‑time monitoring and alerts.  
-- 🌐 **Cross‑Platform** – Runs on Android, iOS, Web, Windows, macOS, Linux.  
-- ⚡ **Lightweight & Fast** – Built with Flutter for performance.  
+- 🐶 **Disease Detection** – Upload/take a photo → Flask API → TensorFlow model → prediction + confidence.
+- 💊 **First‑Aid Suggestions** – Contextual advice for each detected condition.
+- 📊 **Adoption Listings** – Real dog profiles stored in MongoDB, fetched via Flask `/dogs` route.
+- 🌐 **Cross‑Platform App** – Built with Flutter, runs on Android, iOS, Web, Windows, macOS, Linux.
+- 🎨 **Polished UI** – Material 3 theme, camera integration, adoption screen.
 
 ## 🛠️ Tech Stack
-- **Frontend:** Flutter (Dart)  
-- **Backend:** Python (AI integration)  
-- **Database:** SQLite / Firebase (optional)  
-- **Tools:** VS Code, Android Studio, GitHub  
+- **Frontend:** Flutter (Dart)
+- **Backend:** Python (TensorFlow, Flask)
+- **Database:** MongoDB
+- **Tools:** VS Code, Android Emulator, GitHub
 
 ## 📂 Project Structure
 pawguard/
 ├── lib/                # Flutter source code
-├── ai_backend/         # AI models & dataset (ignored in repo)
+├── ai_backend/         # AI model + Flask API + MongoDB seed
+│   ├── train_model.py  # Model training script
+│   ├── app.py          # Flask API (predict + dogs routes)
+│   └── seed_db.py      # MongoDB seeding script
 ├── android/            # Android platform code
 ├── ios/                # iOS platform code
 ├── web/                # Web build
 ├── windows/            # Windows build
 ├── macos/              # macOS build
 ├── linux/              # Linux build
+└── test/               # Unit & widget tests
 
+Code
 
 ## ⚙️ Setup Instructions
-1. **Clone the repo**  
+### Backend
+1. Install dependencies:
    ```bash
-   git clone https://github.com/RajGautam0/pawguard.git
-   cd pawguard
-flutter pub get
+   python -m pip install tensorflow flask pymongo pillow scipy matplotlib
+Train the model:
 
-└── test/               # Unit & widget tests
+bash
+python ai_backend/train_model.py
+Seed MongoDB with sample dogs:
+
+bash
+python ai_backend/seed_db.py
+Run Flask API:
+
+bash
+python ai_backend/app.py
+/predict → POST an image, get disease + confidence + advice.
+
+/dogs → GET adoption listings from MongoDB.
+
+Frontend
+Install Flutter dependencies:
+
+bash
+flutter pub get
+Launch emulator:
+
+bash
+flutter emulators --launch Medium_Phone_API_36.1
+Run the app:
+
+bash
+flutter run
+📸 Demo Flow
+Open app → Camera → Take/choose photo → Flask API → Disease prediction + advice.
+
+Adoption tab → Fetch dogs from MongoDB → Display profiles.
+
+📜 License
+This project is for academic purposes (Final Year Project).
+Responsible AI disclaimer: Predictions are for educational/demo use only and not a substitute for veterinary care.
+
+Made with ❤️ by Raj Gautam
